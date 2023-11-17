@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="flex flex-col items-center mx-10 md:mx-20">
+        <h1 class="prose-2xl mb-4">{{ user.username }}'s Todo List</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tbody id="todo-table-body">
+                {% for todo in todos %}
+                    <tr>
+                        <td>{{ todo.description }}</td>
+                        <td>{{ todo.created_at }}</td>
+                        <td>{{ todo.is_done }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
