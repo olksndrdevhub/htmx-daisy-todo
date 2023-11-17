@@ -18,4 +18,7 @@ from django.urls import path
 
 from todo import views
 
-urlpatterns = [path("", views.index, name="index")]
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("add/", views.add_todo, name="add_todo"),
+]

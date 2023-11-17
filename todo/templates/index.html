@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+
 
 {% block content %}
     <div class="flex flex-col items-center mx-10 md:mx-20">
         <h1 class="prose-2xl mb-4">{{ user.username }}'s Todo List</h1>
-        
-        <table>
+
+        <form class="mb-4"
+            hx-post="{% url 'add_todo' %}"
+            hx-target="#todo-table-body"
+            hx-select="#todo-table-body"
+            hx-swap="outerHTML transition:true"
+            >
+            {% csrf_token %}
+            
+            <div class="form-control">
+                <label class="label" for="id_description">Task description</label>
+                {% render_field form.description class="input input-bordered" %}
+            </div>
+            <div class="form-checkbox">
+                <label class="label" for="id_is_done">Is done?</label>
+                {% render_field form.is_done class="checkbox checkbox-success" %}
+            </div>
+
+            <button class="btn btn-primary mt-2 text-white" type="submit">Add Todo</button>
+        </form>
+
+        <table class="table table-zebra table-lg">
             <thead>
                 <tr>
                     <th>Description</th>

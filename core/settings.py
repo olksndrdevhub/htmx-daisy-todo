@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'todo',
+
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
